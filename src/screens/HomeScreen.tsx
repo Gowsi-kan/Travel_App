@@ -40,8 +40,8 @@ const getPlaceList = (category: string, data: any) => {
 }
 
 const HomeScreen = ({ navigation }: any) => {
-  const DestList = useStore((state: any) => state.DList);
-  const RecommenddList = useStore((state: any) => state.RList);
+  const DestList = useStore((state: any) => state.NorList);
+  const RecommenddList = useStore((state: any) => state.RecoList);
   const [categories, setCategories] = useState(getCategoriesFromData(DestList));
   const [type, setType] = useState(getTypeFromData(DestList));
   const [searchText, setSearchText] = useState('');

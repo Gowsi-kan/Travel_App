@@ -6,7 +6,9 @@ import BeansData from "../data/BeansData";
 // import DestinationData from "../data/DestinationData";
 import CoffeeData from "../data/CoffeeData";
 import PlacesData from "../data/PlacesData";
+import NormalPlacesData from "../data/NormalPlacesData";
 import RecommendedData from "../data/RecommendedData";
+import RecoList from "../data/RecommendationData";
 import DestData from "../data/DestData";
 
 export const useStore = create(
@@ -14,8 +16,10 @@ export const useStore = create(
     (set, get) => ({
       PlacesList: PlacesData,
       DList: DestData,
+      NorList: NormalPlacesData,
       BeanList: BeansData,
       RList: RecommendedData,
+      RecoList: RecoList,
       CartPrice: 0,
       FavoritesList: [],
       CartList: [],
@@ -37,11 +41,11 @@ export const useStore = create(
         set(
           produce((state) => {
             if (type == "Normal") {
-              for (let i = 0; i < state.DList.length; i++) {
-                if (state.DList[i].id == id) {
-                  if (state.DList[i].favorite == false) {
-                    state.DList[i].favorite = true;
-                    state.FavoritesList.unshift(state.DList[i]);
+              for (let i = 0; i < state.NorList.length; i++) {
+                if (state.NorList[i].id == id) {
+                  if (state.NorList[i].favorite == false) {
+                    state.NorList[i].favorite = true;
+                    state.FavoritesList.unshift(state.NorList[i]);
                   }
                   break;
                 }
@@ -63,10 +67,10 @@ export const useStore = create(
         set(
           produce((state) => {
             if (type == "Normal") {
-              for (let i = 0; i < state.DList.length; i++) {
-                if (state.DList[i].id == id) {
-                  if (state.DList[i].favorite == true) {
-                    state.DList[i].favorite = false;
+              for (let i = 0; i < state.NorList.length; i++) {
+                if (state.NorList[i].id == id) {
+                  if (state.NorList[i].favorite == true) {
+                    state.NorList[i].favorite = false;
                   }
                   break;
                 }

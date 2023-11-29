@@ -10,7 +10,7 @@ const DetailsScreens = ({ navigation, route }: any) => {
   console.log('Route = ', route.params);
 
   const ItemofIndex = useStore((state: any) =>
-    route.params.type == "Normal" ? state.DList : state.RList,
+    route.params.type == "Normal" ? state.NorList : state.RecoList,
   )[route.params.index];
 
   const BackHandler = () => {

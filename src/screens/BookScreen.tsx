@@ -4,44 +4,66 @@ import HotelBackgroundInfo from '../components/HotelBackgroundInfo';
 import { useStore } from '../store/store';
 import { COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
 import PaymentFooter from '../components/PaymentFooter';
+import HeaderBar from '../components/HeaderBar';
+import HotelItem from '../components/HotelItem';
 
 const BookScreen = ({ navigation, route }: any) => {
     console.log('Route Book = ', route.params);
 
     const ItemofIndex = useStore((state: any) =>
-        route.params.type == 'Normal' ? state.DList : state.RList,
+        route.params.type == 'Normal' ? state.NPlacesList : state.BestRecList,
     )[route.params.index];
 
     const BackHandler = () => {
         navigation.pop();
     };
-    
+
+    const HotelList = useStore((state: any) => {
+        state.HotelList;
+    })
+    const HotelPrice = useStore((state: any) => {
+        state.HotelPrice;
+    })
+    const calculateTotalPrice = useStore((state: any) => {
+        state.calculateTotalPrice;
+    })
+
+    const buttonPressHandler = () => {
+        navigation.push("Payment", { amount: HotelPrice })
+    }
+
+
     return (
         <View style={styles.ScreenContainer}>
             <StatusBar backgroundColor={COLORS.primaryBlackHex} />
+            <HeaderBar title="Hotel Booking" />
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.ScrollViewFlex}>
-                <HotelBackgroundInfo
-                    EnablebackHandler={true}
-                    imagelink_potrait={ItemofIndex.imagelink_portrait}
-                    type={ItemofIndex.type}
-                    id={ItemofIndex.id}
-                    favorite={ItemofIndex.favorite}
-                    name={ItemofIndex.name}
-                    region={ItemofIndex.region}
-                    averageRating={ItemofIndex.averageRating}
-                    ratingCount={ItemofIndex.ratingsCount}
-                    available={ItemofIndex.available}
-                    BackHandler={BackHandler}
-                />
-                <View style={styles.FooterInfoArea}>
-                    <Text style={styles.InfoTitle}>Description</Text>
+
+                <View style={styles.ScrollViewInnerView}>
+                    <View style={styles.ItemContainer}>
+                        <View style={styles.ListItemContainer}>
+                            <Text>{ItemofIndex.name}</Text>
+                            {
+                                ItemofIndex.accommodations.map((accommodation: any) => (
+                                    <TouchableOpacity onPress={() => { }} key={accommodation.id}>
+                                        <HotelItem
+                                            name={accommodation.name}
+                                            room={accommodation.room}
+                                            imagelink_square={accommodation.imagelink_square}
+                                        />
+                                    </TouchableOpacity>
+                                ))}
+                        </View>
+                    </View>
+
+                    {ItemofIndex && ItemofIndex.accommodations.length !== 0 ? (
+                        <PaymentFooter buttonPressHandler={buttonPressHandler} buttonTitle={'Pay'} />
+                    ) : (
+                        <></>
+                    )}
                 </View>
-                <PaymentFooter
-                    buttonTitle="Book Hotel"
-                    buttonPressHandler={() => { }}
-                />
             </ScrollView>
         </View>
     );
@@ -70,6 +92,17 @@ const styles = StyleSheet.create({
         fontSize: FONTSIZE.size_16 * 0.96,
         color: COLORS.primaryWhiteHex,
         marginBottom: SPACING.space_10
+    },
+    ScrollViewInnerView: {
+        flex: 1,
+        justifyContent: 'space-between',
+    },
+    ItemContainer: {
+        flex: 1,
+    },
+    ListItemContainer: {
+        gap: SPACING.space_16,
+        paddingHorizontal: SPACING.space_30*0.72,
     }
 });
 

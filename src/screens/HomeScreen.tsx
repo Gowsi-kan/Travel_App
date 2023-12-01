@@ -40,8 +40,8 @@ const getPlaceList = (category: string, data: any) => {
 }
 
 const HomeScreen = ({ navigation }: any) => {
-  const DestList = useStore((state: any) => state.NorList);
-  const RecommenddList = useStore((state: any) => state.RecoList);
+  const DestList = useStore((state: any) => state.NPlacesList);
+  const RecommenddList = useStore((state: any) => state.BestRecList);
   const [categories, setCategories] = useState(getCategoriesFromData(DestList));
   const [type, setType] = useState(getTypeFromData(DestList));
   const [searchText, setSearchText] = useState('');
@@ -51,12 +51,8 @@ const HomeScreen = ({ navigation }: any) => {
   });
   const [sortedPlace, setSortedPlace] = useState(getPlaceList(categoryIndex.category, DestList));
 
-  // console.log("DestinationLIST = ", DestinationList.length)
-
   const ListRef: any = useRef<FlatList>();
   const tabBarHeight = useBottomTabBarHeight();
-  // const tabBarHeight = 3;
-
 
   console.log("Categories = ", categories);
   console.log("Sorted Place = ", sortedPlace.length);
@@ -183,7 +179,7 @@ const HomeScreen = ({ navigation }: any) => {
                 navigation.push('Details', {
                   index: item.index,
                   id: item.id,
-                  type: item.type
+                  type: item.type,
                 });
               }}>
               <PlacesCard

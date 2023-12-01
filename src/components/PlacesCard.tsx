@@ -72,7 +72,7 @@ const PlacesCard: React.FC<PlacesCardProps> = ({
                 >
                     <BGIcon
                         color={COLORS.primaryWhiteHex}
-                        name={'add'}
+                        name={'star'}
                         BGColor={COLORS.primaryOrangeHex}
                         size={FONTSIZE.size_10}
                     />

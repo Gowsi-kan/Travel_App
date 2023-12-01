@@ -9,8 +9,21 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/Acropolis/p1/Acropolis.png'),
         activities: ['Visit Louvre Museum', 'Eiffel Tower Experience', 'Seine River Cruise'],
         accommodations: [
-            { name: 'Luxury Hotel', price: '$200/night' },
-            { name: 'Boutique Inn', price: '$120/night' },
+            {
+                id: 'A1', name: 'Luxury Hotel', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A2', name: 'Boutique Inn', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.8,
         ratingsCount: '9,521',
@@ -28,8 +41,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/bora/p1/bora.png'),
         activities: ['Snorkeling Adventure', 'Beachfront Yoga', 'Island Excursion'],
         accommodations: [
-            { name: 'Beach Resort', price: '$250/night' },
-            { name: 'Cozy Bungalow', price: '$80/night' },
+            {
+                id: 'A3', name: 'Beach Resort', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A4', name: 'Cozy Bungalow', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.6,
         ratingsCount: '7,832',
@@ -47,8 +74,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/Eiffel_Tower/p1/Eiffel_Tower.png'),
         activities: ['Mountain Hiking Expedition', 'Scenic Drives', 'Lake Retreat'],
         accommodations: [
-            { name: 'Mountain Lodge', price: '$180/night' },
-            { name: 'Cabin Getaway', price: '$100/night' },
+            {
+                id: 'A5', name: 'Mountain Lodge', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A6', name: 'Cabin Getaway', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.7,
         ratingsCount: '8,215',
@@ -66,8 +107,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/Acropolis/p2/Acropolis.png'),
         activities: ['Visit UNESCO World Heritage Sites', 'Guided Historical Tours', 'Cultural Performances'],
         accommodations: [
-            { name: 'Heritage Hotel', price: '$180/night' },
-            { name: 'Charming Guesthouse', price: '$90/night' },
+            {
+                id: 'A7', name: 'Heritage Hotel', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A8', name: 'Charming Guesthouse', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.9,
         ratingsCount: '6,942',
@@ -85,8 +140,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/Great_Wall/p1/Great_Wall.png'),
         activities: ['Lakefront Meditation', 'Nature Walks', 'Stargazing'],
         accommodations: [
-            { name: 'Cottage by the Lake', price: '$150/night' },
-            { name: 'Wilderness Cabin', price: '$100/night' },
+            {
+                id: 'A9', name: 'Cottage by the Lake', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A10', name: 'Wilderness Cabin', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.5,
         ratingsCount: '5,319',
@@ -104,8 +173,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/hotels/p1/hotels.png'),
         activities: ['Snorkeling Adventure', 'Beachside Relaxation', 'Island Exploration'],
         accommodations: [
-            { name: 'Beachfront Resort', price: '$300/night' },
-            { name: 'Seaside Villa', price: '$150/night' },
+            {
+                id: 'A11', name: 'Beachfront Resort', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A12', name: 'Seaside Villa', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.7,
         ratingsCount: '6,754',
@@ -123,8 +206,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/Iguazu_Falls/p1/Iguazu_Falls.png'),
         activities: ['Forest Walks', 'Nature Photography', 'Birdwatching'],
         accommodations: [
-            { name: 'Woodland Cabin', price: '$120/night' },
-            { name: 'Treehouse Retreat', price: '$80/night' },
+            {
+                id: 'A13', name: 'Woodland Cabin', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A14', name: 'Treehouse Retreat', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.6,
         ratingsCount: '7,421',
@@ -142,8 +239,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/Lush_Greenery/p1/Lush_Greenery.png'),
         activities: ['Skiing Adventure', 'Snowball Fights', 'Cozy Cabin Retreat'],
         accommodations: [
-            { name: 'Mountain Chalet', price: '$220/night' },
-            { name: 'Snowy Lodge', price: '$150/night' },
+            {
+                id: 'A15', name: 'Mountain Chalet', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A16', name: 'Snowy Lodge', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.8,
         ratingsCount: '8,932',
@@ -161,8 +272,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/Machu_Picchu/p1/Machu_Picchu.png'),
         activities: ['Game Drives', 'Bush Walks', 'Safari Camp Experience'],
         accommodations: [
-            { name: 'Safari Lodge', price: '$300/night' },
-            { name: 'Tented Camp', price: '$180/night' },
+            {
+                id: 'A17', name: 'Safari Lodge', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A18', name: 'Tented Camp', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.9,
         ratingsCount: '9,216',
@@ -180,8 +305,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/Santorini/p1/Santorini.png'),
         activities: ['Beachside Dining', 'Sunset Cruises', 'Couples Massage'],
         accommodations: [
-            { name: 'Luxury Beach Resort', price: '$350/night' },
-            { name: 'Private Beach Villa', price: '$200/night' },
+            {
+                id: 'A19', name: 'Luxury Beach Resort', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A20', name: 'Private Beach Villa', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.7,
         ratingsCount: '7,590',
@@ -199,8 +338,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/Rainbow_Mountain/p1/Rainbow_Mountain.png'),
         activities: ['Art Galleries Tour', 'Cultural Performances', 'Local Cuisine Exploration'],
         accommodations: [
-            { name: 'Cultural District Hotel', price: '$180/night' },
-            { name: 'Artisan Guesthouse', price: '$100/night' },
+            {
+                id: 'A21', name: 'Cultural District Hotel', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A22', name: 'Artisan Guesthouse', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.6,
         ratingsCount: '7,128',
@@ -218,8 +371,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/hotels1/p2/hotels1.png'),
         activities: ['River Kayaking', 'Riverside Yoga', 'Nature Walks'],
         accommodations: [
-            { name: 'Riverside Cabin', price: '$140/night' },
-            { name: 'Nature Lodge', price: '$90/night' },
+            {
+                id: 'A23', name: 'Riverside Cabin', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A24', name: 'Nature Lodge', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.5,
         ratingsCount: '6,418',
@@ -237,8 +404,22 @@ const PlacesData = [
         imagelink_portrait: require('../assets/places_assets/hotel3/p1/hotel3.png'),
         activities: ['Mountain Hiking', 'Alpine Photography', 'Mountain Lodge Retreat'],
         accommodations: [
-            { name: 'Alpine Chalet', price: '$200/night' },
-            { name: 'Mountain View Cabin', price: '$120/night' },
+            {
+                id: 'A25', name: 'Alpine Chalet', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
+            {
+                id: 'A26', name: 'Mountain View Cabin', room: [
+                    { size: 'S', price: '$60' },
+                    { size: 'M', price: '$80' },
+                    { size: 'L', price: '$100' },
+                ],
+                imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
+            },
         ],
         averageRating: 4.7,
         ratingsCount: '8,021',

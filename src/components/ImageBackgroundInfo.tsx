@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
         fontFamily: FONTFAMILY.poppins_medium,
         fontSize: FONTSIZE.size_10,
         color: COLORS.primaryWhiteHex,
+        textAlign: 'center'
     },
     PropertySecond: {
         height: 32,

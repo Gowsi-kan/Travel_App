@@ -2,26 +2,16 @@ import { create } from "zustand";
 import { produce } from "immer";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import BeansData from "../data/BeansData";
-// import DestinationData from "../data/DestinationData";
-import CoffeeData from "../data/CoffeeData";
-import PlacesData from "../data/PlacesData";
 import NormalPlacesData from "../data/NormalPlacesData";
-import RecommendedData from "../data/RecommendedData";
-import RecoList from "../data/RecommendationData";
-import DestData from "../data/DestData";
+import RecommendationData from "../data/RecommendationData";
 
 export const useStore = create(
   persist(
     (set, get) => ({
-      PlacesList: PlacesData,
-      DList: DestData,
-      NorList: NormalPlacesData,
-      BeanList: BeansData,
-      RList: RecommendedData,
-      RecoList: RecoList,
+      NPlacesList: NormalPlacesData,
+      BestRecList: RecommendationData,
       CartPrice: 0,
-      FavoritesList: [],
+      FList: [],
       CartList: [],
       BookingHistoryList: [],
       addToCart: (cartItem: any) =>
@@ -37,25 +27,25 @@ export const useStore = create(
             }
           })
         ),
-      addToFavoriteList: (type: string, id: string) =>
+      addFavoriteList: (type: string, id: string) =>
         set(
           produce((state) => {
             if (type == "Normal") {
-              for (let i = 0; i < state.NorList.length; i++) {
-                if (state.NorList[i].id == id) {
-                  if (state.NorList[i].favorite == false) {
-                    state.NorList[i].favorite = true;
-                    state.FavoritesList.unshift(state.NorList[i]);
+              for (let i = 0; i < state.NPlacesList.length; i++) {
+                if (state.NPlacesList[i].id == id) {
+                  if (state.NPlacesList[i].favorite == false) {
+                    state.NPlacesList[i].favorite = true;
+                    state.FList.unshift(state.NPlacesList[i]);
                   }
                   break;
                 }
               }
             } else if (type == "Recommend") {
-              for (let i = 0; i < state.RList.length; i++) {
-                if (state.RList[i].id == id) {
-                  if (state.RList[i].favorite == false) {
-                    state.RList[i].favorite = true;
-                    state.FavoritesList.unshift(state.RList[i]);
+              for (let i = 0; i < state.BestRecList.length; i++) {
+                if (state.BestRecList[i].id == id) {
+                  if (state.BestRecList[i].favorite == false) {
+                    state.BestRecList[i].favorite = true;
+                    state.FList.unshift(state.BestRecList[i]);
                   }
                   break;
                 }
@@ -63,36 +53,36 @@ export const useStore = create(
             }
           })
         ),
-      deleteFromFavoriteList: (type: string, id: string) =>
+      deleteFavoriteList: (type: string, id: string) =>
         set(
           produce((state) => {
             if (type == "Normal") {
-              for (let i = 0; i < state.NorList.length; i++) {
-                if (state.NorList[i].id == id) {
-                  if (state.NorList[i].favorite == true) {
-                    state.NorList[i].favorite = false;
+              for (let i = 0; i < state.NPlacesList.length; i++) {
+                if (state.NPlacesList[i].id == id) {
+                  if (state.NPlacesList[i].favorite == true) {
+                    state.NPlacesList[i].favorite = false;
                   }
                   break;
                 }
               }
             } else if (type == "Recommend") {
-              for (let i = 0; i < state.RList.length; i++) {
-                if (state.RList[i].id == id) {
-                  if (state.RList[i].favorite == true) {
-                    state.RList[i].favorite = false;
+              for (let i = 0; i < state.BestRecList.length; i++) {
+                if (state.BestRecList[i].id == id) {
+                  if (state.BestRecList[i].favorite == true) {
+                    state.BestRecList[i].favorite = false;
                   }
                   break;
                 }
               }
             }
             let spliceIndex = -1;
-            for (let i = 0; i < state.FavoritesList.length; i++) {
-              if (state.FavoritesList[i].id == id) {
+            for (let i = 0; i < state.FList.length; i++) {
+              if (state.FList[i].id == id) {
                 spliceIndex = i;
                 break;
               }
             }
-            state.FavoritesList.splice(spliceIndex, 1);
+            state.FList.splice(spliceIndex, 1);
           })
         ),
     }),

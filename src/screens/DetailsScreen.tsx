@@ -10,20 +10,20 @@ const DetailsScreens = ({ navigation, route }: any) => {
   console.log('Route = ', route.params);
 
   const ItemofIndex = useStore((state: any) =>
-    route.params.type == "Normal" ? state.NorList : state.RecoList,
+    route.params.type == "Normal" ? state.NPlacesList : state.BestRecList,
   )[route.params.index];
 
   const BackHandler = () => {
     navigation.pop();
   };
 
-  const addToFavoriteList = useStore((state: any) => state.addToFavoriteList);
-  const deleteFromFavoriteList = useStore(
-    (state: any) => state.deleteFromFavoriteList,
+  const addFavoriteList = useStore((state: any) => state.addFavoriteList);
+  const deleteFavoriteList = useStore(
+    (state: any) => state.deleteFavoriteList,
   )
 
   const ToggleFavorite = (favorite: boolean, type: string, id: string) => {
-    favorite ? deleteFromFavoriteList(type, id) : addToFavoriteList(type, id);
+    favorite ? deleteFavoriteList(type, id) : addFavoriteList(type, id);
   };
 
   const [fullDesc, setFullDesc] = useState(false);

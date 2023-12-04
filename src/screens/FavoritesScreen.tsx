@@ -7,7 +7,7 @@ import HeaderBar from '../components/HeaderBar'
 import FavoriteItemCard from '../components/FavoriteItemCard'
 import EmptyListAnimation from '../components/EmptyListAnimation'
 
-const FavouriteScreen = ({ navigation }: any) => {
+const FavouriteScreen = ({ navigation,route }: any) => {
     const FavoriteList = useStore((state: any) => state.FList)
 
     const tabBarHeight = useBottomTabBarHeight();
@@ -45,14 +45,14 @@ const FavouriteScreen = ({ navigation }: any) => {
                                 {
                                     FavoriteList.map((data: any) => (
                                         <TouchableOpacity
-                                            onPress={() => {
-                                                // navigation.push('Details'), {
-                                                //     index: data.index,
-                                                //     id: data.id,
-                                                //     type: data.type
-                                                // }
-                                            }}
                                             key={data.id}
+                                            onPress={() => {
+                                                navigation.push('Details', {
+                                                    index: data.index,
+                                                    id: data.id,
+                                                    type: data.type,
+                                                });
+                                            }}
                                         >
                                             <FavoriteItemCard
                                                 imagelink_square={data.imagelink_square}

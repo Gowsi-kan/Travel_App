@@ -10,7 +10,7 @@ const DetailsScreens = ({ navigation, route }: any) => {
   console.log('Route = ', route.params);
 
   const ItemofIndex = useStore((state: any) =>
-    route.params.type == "Normal" ? state.NPlacesList : state.BestRecList,
+    route.params.type == "Normal" ? state.PlacesDataList : state.BestRecList,
   )[route.params.index];
 
   const BackHandler = () => {
@@ -27,6 +27,35 @@ const DetailsScreens = ({ navigation, route }: any) => {
   };
 
   const [fullDesc, setFullDesc] = useState(false);
+
+  const addToCart = useStore((state: any) => state.addToCart);
+  const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
+  const [price, setPrice] = useState(ItemofIndex.accommodations[0].room[0].price)
+  
+  const addToCartHandler = ({
+    type,
+    id,
+    favorite,
+    name,
+    region,
+    averageRating,
+    ratingCount,
+    available,
+    accommodations
+  }: any) => {
+    addToCart({
+      type,
+      id,
+      favorite,
+      name,
+      region,
+      averageRating,
+      ratingCount,
+      available,
+      accommodations: [{...price,quantity: 1}],
+    });
+    calculateCartPrice();
+   };
 
   return (
     <View style={styles.ScreenContainer}>
@@ -61,6 +90,8 @@ const DetailsScreens = ({ navigation, route }: any) => {
           )}
         </View>
         <PaymentFooter
+          price={0}
+          isPrice={false}   
           buttonTitle="Book Hotel"
           buttonPressHandler={() => {
             navigation.push('Book', {
@@ -68,8 +99,18 @@ const DetailsScreens = ({ navigation, route }: any) => {
               id: ItemofIndex.id,
               type: ItemofIndex.type
             });
-          }}
-          />
+            addToCartHandler({
+              type: ItemofIndex.type,
+              id: ItemofIndex.id,
+              favorite: ItemofIndex.favorite,
+              name: ItemofIndex.name,
+              region: ItemofIndex.region,
+              averageRating: ItemofIndex.averageRating,
+              ratingCount: ItemofIndex.ratingsCount,
+              available: ItemofIndex.available,
+              accommodations: ItemofIndex.accommodations,
+            });
+          } }      />
       </ScrollView>
     </View>
   )

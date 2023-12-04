@@ -2,17 +2,21 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import { COLORS, SPACING } from '../theme/theme';
 
-const ProfilePic = () => {
+interface ProfilePicProps {
+    isProfile?: boolean;
+}
+
+const ProfilePic: React.FC<ProfilePicProps> = ({ isProfile }) => {
     return (
         <View style={styles.ImageContainer}>
-            <Image
-                source={require('../assets/app_images/avatar.png')}
-                style={styles.Image}
-            />
+            {isProfile ?
+                (<Image
+                    source={require('../assets/app_images/avatar.png')}
+                    style={styles.Image}
+                />) : <></>}
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     ImageContainer: {
@@ -20,7 +24,7 @@ const styles = StyleSheet.create({
         width: SPACING.space_36,
         borderRadius: SPACING.space_12,
         borderWidth: 2,
-        borderColor: COLORS.secondaryDarkGreyHex,
+        borderColor: COLORS.primaryBlackHex,
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',

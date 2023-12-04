@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import HotelBackgroundInfo from '../components/HotelBackgroundInfo';
 import { useStore } from '../store/store';
@@ -11,27 +11,26 @@ const BookScreen = ({ navigation, route }: any) => {
     console.log('Route Book = ', route.params);
 
     const ItemofIndex = useStore((state: any) =>
-        route.params.type == 'Normal' ? state.NPlacesList : state.BestRecList,
+        route.params.type == 'Normal' ? state.PlacesDataList : state.BestRecList,
     )[route.params.index];
+
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    let tempPrice = 0;
+
+    const handleTotalPriceChange = (newTotalPrice: number) => {
+        console.log("New Total Price:", newTotalPrice);
+        tempPrice = tempPrice + newTotalPrice;
+        setTotalPrice(tempPrice);
+    };
 
     const BackHandler = () => {
         navigation.pop();
     };
 
-    const HotelList = useStore((state: any) => {
-        state.HotelList;
-    })
-    const HotelPrice = useStore((state: any) => {
-        state.HotelPrice;
-    })
-    const calculateTotalPrice = useStore((state: any) => {
-        state.calculateTotalPrice;
-    })
-
     const buttonPressHandler = () => {
-        navigation.push("Payment", { amount: HotelPrice })
+        navigation.push("Payment", { amount: totalPrice })
     }
-
 
     return (
         <View style={styles.ScreenContainer}>
@@ -43,6 +42,7 @@ const BookScreen = ({ navigation, route }: any) => {
 
                 <View style={styles.ScrollViewInnerView}>
                     <View style={styles.ItemContainer}>
+                        
                         <View style={styles.ListItemContainer}>
                             <Text>{ItemofIndex.name}</Text>
                             {
@@ -52,19 +52,26 @@ const BookScreen = ({ navigation, route }: any) => {
                                             name={accommodation.name}
                                             room={accommodation.room}
                                             imagelink_square={accommodation.imagelink_square}
+                                            onTotalPriceChange={handleTotalPriceChange}
                                         />
                                     </TouchableOpacity>
                                 ))}
                         </View>
                     </View>
 
-                    {ItemofIndex && ItemofIndex.accommodations.length !== 0 ? (
-                        <PaymentFooter buttonPressHandler={buttonPressHandler} buttonTitle={'Pay'} />
-                    ) : (
-                        <></>
-                    )}
+                    
                 </View>
             </ScrollView>
+            {ItemofIndex && ItemofIndex.accommodations.length !== 0 ? (
+                <PaymentFooter
+                    buttonPressHandler={buttonPressHandler}
+                    buttonTitle={'Pay'}
+                    price={totalPrice}
+                    isPrice={true}
+                />
+            ) : (
+                <></>
+            )}
         </View>
     );
 };
@@ -102,7 +109,7 @@ const styles = StyleSheet.create({
     },
     ListItemContainer: {
         gap: SPACING.space_16,
-        paddingHorizontal: SPACING.space_30*0.72,
+        paddingHorizontal: SPACING.space_30 * 0.72,
     }
 });
 

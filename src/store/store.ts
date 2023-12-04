@@ -8,7 +8,7 @@ import RecommendationData from "../data/RecommendationData";
 export const useStore = create(
   persist(
     (set, get) => ({
-      NPlacesList: NormalPlacesData,
+      PlacesDataList: NormalPlacesData,
       BestRecList: RecommendationData,
       CartPrice: 0,
       FList: [],
@@ -22,20 +22,61 @@ export const useStore = create(
               if (state.CartList[i].id == cartItem.id) {
                 found = true;
                 let size = false;
-                // for (let j = 0;j<state.CartList[i])
+                for (let j = 0; j < state.CartList[i].accommodations[0].length; j++) {
+                
+                  if (state.CartList[i].accommodations.room[j].size == cartItem.accommodations.room[0].size) {
+                    size = true;
+                    state.CartList[i].accommodations.room[j].quantity++;
+                    break;
+                  }
+                  if (size == false) {
+                    state.CartList[i].accommodations.room[j].push(cartItem.accommodations.room[0])
+                  }
+                  state.CartList[i].accommodations.room[j].price((a: any, b: any) => {
+                    if (a.size > b.size) {
+                      return -1;
+                    }
+                    if (a.size < b.size) {
+                      return 1;
+                    }
+                    return 0;
+                  })
+                }
+                break;
               }
+            }
+            if (found == false) {
+              state.CartList.push(cartItem);
             }
           })
         ),
+      calculateCartPrice: () =>
+        set(
+          produce(state => {
+            let totalPrice = 0;
+            for (let i = 0; i < state.CartList.length; i++) {
+              let tempprice = 0;
+              for (let j = 0; j < state.CartList[i].accommodations[0].length; j++) {
+                
+                  tempprice = tempprice + parseFloat(state.CartList[i].accommodations.room[j].price) * state.CartList[i].accommodations.room[j].quantity;
+                
+              }
+              state.CartList[i].ItemPrice = tempprice.toFixed(2).toString();
+              totalPrice = totalPrice + tempprice;
+            }
+            state.CartPrice = totalPrice.toFixed(2).toString();
+          })),
+      
+
       addFavoriteList: (type: string, id: string) =>
         set(
           produce((state) => {
             if (type == "Normal") {
-              for (let i = 0; i < state.NPlacesList.length; i++) {
-                if (state.NPlacesList[i].id == id) {
-                  if (state.NPlacesList[i].favorite == false) {
-                    state.NPlacesList[i].favorite = true;
-                    state.FList.unshift(state.NPlacesList[i]);
+              for (let i = 0; i < state.PlacesDataList.length; i++) {
+                if (state.PlacesDataList[i].id == id) {
+                  if (state.PlacesDataList[i].favorite == false) {
+                    state.PlacesDataList[i].favorite = true;
+                    state.FList.unshift(state.PlacesDataList[i]);
                   }
                   break;
                 }
@@ -57,10 +98,10 @@ export const useStore = create(
         set(
           produce((state) => {
             if (type == "Normal") {
-              for (let i = 0; i < state.NPlacesList.length; i++) {
-                if (state.NPlacesList[i].id == id) {
-                  if (state.NPlacesList[i].favorite == true) {
-                    state.NPlacesList[i].favorite = false;
+              for (let i = 0; i < state.PlacesDataList.length; i++) {
+                if (state.PlacesDataList[i].id == id) {
+                  if (state.PlacesDataList[i].favorite == true) {
+                    state.PlacesDataList[i].favorite = false;
                   }
                   break;
                 }

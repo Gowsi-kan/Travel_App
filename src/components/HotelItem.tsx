@@ -1,20 +1,71 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image, ImageProps, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
 import CustomIcon from './CustomIcon';
+import { useNavigation } from '@react-navigation/native';
 
 interface HotelItemProps {
     name: string;
     room: any;
     imagelink_square: ImageProps;
+    onTotalPriceChange: any;
 }
 
 const HotelItem: React.FC<HotelItemProps> = ({
     name,
     room,
     imagelink_square,
+    onTotalPriceChange,
 }) => {
+
+    const [quantities, setQuantities] = useState<{ [size: string]: number }>({});
+
+    const handleAddQuantity = (item: any) => {
+        const updatedQuantities = { ...quantities };
+        updatedQuantities[item.size] = (updatedQuantities[item.size] || 0) + 1;
+        setQuantities(updatedQuantities);
+    };
+
+    const handleReduceQuantity = (item: any) => {
+        setQuantities((prevQuantities) => {
+            const currentQuantity = prevQuantities[item.size] || 0;
+            if (currentQuantity > 0) {
+                const updatedQuantities = { ...prevQuantities };
+                updatedQuantities[item.size] = currentQuantity - 1;
+                return updatedQuantities;
+            }
+            return prevQuantities; // Return unchanged state if currentQuantity is already 0
+        });
+    };
+
+    const calculateTotalPrice = (item: any) => {
+        const quantity = Number(quantities[item.size]) || 0;
+        // Remove the "$" sign and convert the remaining string to a number
+        const price = Number(item.price.replace('$', '')) || 0;
+        return quantity * price;
+    };
+
+    const calculateOverallTotalPrice = () => {
+        let totalPrice = 0;
+
+        // Check if all size quantities are zero
+        const allQuantitiesZero = Object.values(quantities).every((quantity) => quantity === 0);
+
+        if (allQuantitiesZero) {
+            // If all quantities are zero, set total price to zero
+            totalPrice = 0;
+        } else {
+            // Calculate total price based on selected quantities
+            room.forEach((data: any) => {
+                totalPrice += calculateTotalPrice(data);
+            });
+        }
+
+        onTotalPriceChange(totalPrice);
+        return totalPrice;
+    };
+
     return (
         <View>
             <LinearGradient
@@ -35,23 +86,29 @@ const HotelItem: React.FC<HotelItemProps> = ({
                     <View key={index.toString()} style={styles.HotelItemSizeRowContainer}>
                         <View style={styles.HotelItemSizeValueContainer}>
                             <View style={styles.SizeBox}>
-                                <Text style={[styles.SizeText,{fontSize: FONTSIZE.size_12}]}>{data.size}</Text>
+                                <Text style={[styles.SizeText, { fontSize: FONTSIZE.size_12 }]}>{data.size}</Text>
                             </View>
                             <Text style={styles.SizeText}>{data.price}</Text>
                         </View>
                         <View style={styles.HotelItemSizeValueContainer}>
-                            <TouchableOpacity style={styles.HotelItemIcon}>
+                            <TouchableOpacity style={styles.HotelItemIcon} onPress={() => handleReduceQuantity(data)}>
                                 <CustomIcon name="minus" color={COLORS.primaryWhiteHex} size={FONTSIZE.size_10} />
                             </TouchableOpacity>
-                            <View style={styles.BookItemQuantityContainer}>
-                                <Text style={styles.BookItemQuantityText}>{data.quantity}</Text>
+                            <View style={styles.BookItemQuantityContainer} >
+                                <Text style={styles.BookItemQuantityText}>{quantities[data.size] || 0}</Text>
                             </View>
-                            <TouchableOpacity style={styles.HotelItemIcon}>
+                            <TouchableOpacity style={styles.HotelItemIcon} onPress={() => handleAddQuantity(data)}>
                                 <CustomIcon name="add" color={COLORS.primaryWhiteHex} size={FONTSIZE.size_10} />
                             </TouchableOpacity>
                         </View>
                     </View>
                 ))}
+
+                <View style={styles.TotalContainer}>
+                    <View style={styles.TotalPriceContainer} >
+                        <Text style={styles.TotalPriceText}>Total : ${calculateOverallTotalPrice()}</Text>
+                    </View>
+                </View>
             </LinearGradient>
         </View>
     )
@@ -73,7 +130,7 @@ const styles = StyleSheet.create({
     },
     HotelItemImage: {
         height: 120,
-        width: 120,
+        width: 160,
         borderRadius: BORDERRADIUS.radius_20
     },
     HotelItemInfo: {
@@ -136,6 +193,23 @@ const styles = StyleSheet.create({
         fontFamily: FONTFAMILY.poppins_semibold,
         fontSize: FONTSIZE.size_16,
         color: COLORS.primaryWhiteHex
+    },
+    TotalPriceContainer: {
+        backgroundColor: COLORS.primaryBlackRGBA,
+        width: 347,
+        borderRadius: BORDERRADIUS.radius_10,
+        borderWidth: 2,
+        borderColor: COLORS.primaryGreyHex,
+        alignItems: 'center',
+        paddingVertical: SPACING.space_4,
+    },
+    TotalPriceText: {
+        fontFamily: FONTFAMILY.poppins_semibold,
+        fontSize: FONTSIZE.size_16,
+        color: COLORS.primaryWhiteHex
+    },
+    TotalContainer: {
+        alignItems: 'center'
     }
 });
 

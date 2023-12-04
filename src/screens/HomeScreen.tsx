@@ -6,6 +6,7 @@ import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/th
 import HeaderBar from '../components/HeaderBar';
 import CustomIcon from '../components/CustomIcon';
 import PlacesCard from '../components/PlacesCard';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {};
@@ -40,7 +41,7 @@ const getPlaceList = (category: string, data: any) => {
 }
 
 const HomeScreen = ({ navigation }: any) => {
-  const DestList = useStore((state: any) => state.NPlacesList);
+  const DestList = useStore((state: any) => state.PlacesDataList);
   const RecommenddList = useStore((state: any) => state.BestRecList);
   const [categories, setCategories] = useState(getCategoriesFromData(DestList));
   const [type, setType] = useState(getTypeFromData(DestList));
@@ -80,6 +81,9 @@ const HomeScreen = ({ navigation }: any) => {
     setSearchText('');
   }
 
+  const addToCart = useStore((state: any) => state.addToCart);
+  const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
+
   return (
     <View style={styles.ScreenContainer}>
       <StatusBar backgroundColor={COLORS.primaryBlackHex} />
@@ -87,7 +91,7 @@ const HomeScreen = ({ navigation }: any) => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.ScrollViewFlex}>
         {/* App Header */}
-        <HeaderBar />
+        <HeaderBar isProfile={true} />
 
         <Text style={styles.ScreenTitle}>Find the best{'\n'}places for you</Text>
 
@@ -97,7 +101,7 @@ const HomeScreen = ({ navigation }: any) => {
             onPress={() => {
               searchPlace(searchText)
             }}>
-            <CustomIcon
+            <Ionicons
               style={styles.InputIcon}
               name="search"
               size={FONTSIZE.size_18}

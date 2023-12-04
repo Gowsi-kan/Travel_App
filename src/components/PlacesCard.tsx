@@ -18,6 +18,7 @@ import {
 } from '../theme/theme';
 import CustomIcon from './CustomIcon';
 import BGIcon from './BGIcon';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const CARD_WIDTH = Dimensions.get('window').width * 0.32;
 
@@ -55,10 +56,10 @@ const PlacesCard: React.FC<PlacesCardProps> = ({
                 style={styles.CardImageBG}
                 resizeMode="cover">
                 <View style={styles.CardRatingContainer}>
-                    <CustomIcon
+                    <Ionicons
                         name="star"
                         color={COLORS.primaryOrangeHex}
-                        size={FONTSIZE.size_14}
+                        size={FONTSIZE.size_14*1.2}
                     />
                     <Text style={styles.CardRatingText}>{averageRating}</Text>
                 </View>
@@ -72,9 +73,9 @@ const PlacesCard: React.FC<PlacesCardProps> = ({
                 >
                     <BGIcon
                         color={COLORS.primaryWhiteHex}
-                        name={'star'}
+                        name={'eye'}
                         BGColor={COLORS.primaryOrangeHex}
-                        size={FONTSIZE.size_10}
+                        size={FONTSIZE.size_18}
                     />
                 </TouchableOpacity>
             </View>

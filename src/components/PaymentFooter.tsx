@@ -5,17 +5,30 @@ import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/th
 interface PaymentFooterProps {
   buttonPressHandler: any;
   buttonTitle: string;
+  price: number;
+  isPrice: boolean;
 }
 
 const PaymentFooter: React.FC<PaymentFooterProps> = ({
   buttonPressHandler,
-  buttonTitle
+  buttonTitle,
+  price,
+  isPrice,
 }) => {
   return (
     <View style={styles.PriceFooter}>
+      {
+        isPrice ?
+          (<View style={styles.PriceContainer}>
+            <Text style={styles.PriceTitle}>Price</Text>
+            <Text style={styles.PriceText}>
+              <Text style={styles.Price}>$</Text>
+              {price}
+            </Text>
+          </View>) : (<></>)}
       <TouchableOpacity
         style={styles.PayButton}
-        onPress={() => buttonPressHandler() }>
+        onPress={() => buttonPressHandler()}>
         <Text style={styles.ButtonText}>{buttonTitle}</Text>
       </TouchableOpacity>
     </View>
@@ -42,6 +55,23 @@ const styles = StyleSheet.create({
     fontFamily: FONTFAMILY.poppins_semibold,
     fontSize: FONTSIZE.size_18,
     color: COLORS.primaryWhiteHex,
+  },
+  PriceContainer: {
+    alignItems: 'center',
+    width: 100,
+  },
+  PriceTitle: {
+    fontFamily: FONTFAMILY.poppins_medium,
+    fontSize: FONTSIZE.size_14,
+    color: COLORS.primaryLightGreyHex,
+  },
+  PriceText: {
+    fontFamily: FONTFAMILY.poppins_semibold,
+    fontSize: FONTSIZE.size_24,
+    color: COLORS.primaryOrangeHex,
+  },
+  Price: {
+    color: COLORS.primaryWhiteHex
   }
 });
 

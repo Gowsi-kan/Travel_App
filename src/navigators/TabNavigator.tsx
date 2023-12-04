@@ -6,9 +6,9 @@ import { BlurView } from '@react-native-community/blur'
 import HomeScreen from '../screens/HomeScreen'
 import CartScreen from '../screens/CartScreen'
 import FavoriteScreens from '../screens/FavoritesScreen'
-import BookingHistoryScreens from '../screens/BookingHistoryScreen'
+import UserScreen from '../screens/UserScreen'
 import CustomIcon from '../components/CustomIcon'
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,9 +42,9 @@ const TabNavigator = () => {
             focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex} />
         )
       }}></Tab.Screen>
-      <Tab.Screen name="History" component={BookingHistoryScreens} options={{
+      <Tab.Screen name="History" component={UserScreen} options={{
         tabBarIcon: ({ focused, color, size }) => (
-          <CustomIcon name="bell" size={25} color={
+          <Ionicons name="person" size={25} color={
             focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex} />
         )
       }}></Tab.Screen>

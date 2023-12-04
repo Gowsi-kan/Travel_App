@@ -6,14 +6,15 @@ import ProfilePic from './ProfilePic';
 
 interface HeaderBarProps {
     title?: string;
+    isProfile?: boolean;
 }
 
-const HeaderBar: React.FC<HeaderBarProps> = ({ title }) => {
+const HeaderBar: React.FC<HeaderBarProps> = ({ title, isProfile }) => {
     return (
         <View style={styles.HeaderContainer}>
             <GradientBGIcon name='menu' color={COLORS.primaryLightGreyHex} size={FONTSIZE.size_16} />
             <Text style={styles.HeaderText}>{title}</Text>
-            <ProfilePic />
+            <ProfilePic isProfile={isProfile} />
         </View>
     )
 }
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
         fontFamily: FONTFAMILY.poppins_semibold,
         fontSize: FONTSIZE.size_20,
         color: COLORS.primaryWhiteHex,
-    }
+    },
 });
 
 export default HeaderBar;

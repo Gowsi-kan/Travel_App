@@ -49,21 +49,72 @@ interface Color {
   secondaryRedHex: string;
 }
 
+// export const COLORS: Color = {
+//   primaryRedHex: '#DC3535',
+//   primaryOrangeHex: '#D17842',
+//   primaryBlackHex: '#0C0F14',
+//   primaryDarkGreyHex: '#141921',
+//   secondaryDarkGreyHex: '#21262E',
+//   primaryGreyHex: '#252A32',
+//   secondaryGreyHex: '#252A32',
+//   primaryLightGreyHex: '#52555A',
+//   secondaryLightGreyHex: '#AEAEAE',
+//   primaryWhiteHex: '#FFFFFF',
+//   primaryBlackRGBA: 'rgba(12,15,20,0.5)',
+//   secondaryBlackRGBA: 'rgba(0,0,0,0.7)',
+//   primaryGreenHex: '#ACFFA7',
+//   secondaryRedHex: '#FF5E5E',
+// };
+
+// export const COLORS: Color = {
+//   primaryRedHex: '#DC3535',
+//   primaryOrangeHex: '#b266f2',
+//   primaryBlackHex: '#F1EAFF',
+//   primaryDarkGreyHex: '#E5D4FF',
+//   secondaryDarkGreyHex: '#DCBFFF',
+//   primaryGreyHex: '#DCBFFF',
+//   secondaryGreyHex: '#E5D4FF',
+//   primaryLightGreyHex: '#b266f2',
+//   secondaryLightGreyHex: '#b266f2',
+//   primaryWhiteHex: '#b266f2',
+//   primaryBlackRGBA: '#E5D4FF',
+//   secondaryBlackRGBA: 'rgba(0,0,0,0.7)',
+//   primaryGreenHex: '#ACFFA7',
+//   secondaryRedHex: '#FF5E5E',
+// };
+
+// export const COLORS: Color = {
+//   primaryRedHex: '#FF5E5E',
+//   primaryOrangeHex: '#FFA500',
+//   primaryBlackHex: '#303030',
+//   primaryDarkGreyHex: '#363636',
+//   secondaryDarkGreyHex: '#434343',
+//   primaryGreyHex: '#555555',
+//   secondaryGreyHex: '#555555',
+//   primaryLightGreyHex: '#A0A0A0',
+//   secondaryLightGreyHex: '#C0C0C0',
+//   primaryWhiteHex: '#FFFFFF',
+//   primaryBlackRGBA: 'rgba(48,48,48,0.5)',
+//   secondaryBlackRGBA: 'rgba(0,0,0,0.7)',
+//   primaryGreenHex: '#00FF00',
+//   secondaryRedHex: '#FF0000',
+// };
+
 export const COLORS: Color = {
-  primaryRedHex: '#DC3535',
-  primaryOrangeHex: '#D17842',
-  primaryBlackHex: '#0C0F14',
-  primaryDarkGreyHex: '#141921',
-  secondaryDarkGreyHex: '#21262E',
-  primaryGreyHex: '#252A32',
-  secondaryGreyHex: '#252A32',
-  primaryLightGreyHex: '#52555A',
-  secondaryLightGreyHex: '#AEAEAE',
+  primaryRedHex: '#FF453A',
+  primaryOrangeHex: '#FF9F0A',
+  primaryBlackHex: '#1C1C1E',
+  primaryDarkGreyHex: '#2C2C2E',
+  secondaryDarkGreyHex: '#3A3A3C',
+  primaryGreyHex: '#48484A',
+  secondaryGreyHex: '#58585A',
+  primaryLightGreyHex: '#636366',
+  secondaryLightGreyHex: '#78787A',
   primaryWhiteHex: '#FFFFFF',
-  primaryBlackRGBA: 'rgba(12,15,20,0.5)',
+  primaryBlackRGBA: 'rgba(28,28,30,0.5)',
   secondaryBlackRGBA: 'rgba(0,0,0,0.7)',
-  primaryGreenHex: '#ACFFA7',
-  secondaryRedHex: '#FF5E5E',
+  primaryGreenHex: '#34C759',
+  secondaryRedHex: '#FF3B30',
 };
 
 interface FontFamily {

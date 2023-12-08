@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import HotelBackgroundInfo from '../components/HotelBackgroundInfo';
+import { ImageBackground, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useStore } from '../store/store';
-import { COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
+import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
 import PaymentFooter from '../components/PaymentFooter';
 import HeaderBar from '../components/HeaderBar';
 import HotelItem from '../components/HotelItem';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import GradientBGIcon from '../components/GradientBGIcon';
 
 const BookScreen = ({ navigation, route }: any) => {
-    console.log('Route Book = ', route.params);
 
     const ItemofIndex = useStore((state: any) =>
-        route.params.type == 'Normal' ? state.PlacesDataList : state.BestRecList,
+        route.params.type == 'Normal' ? state.PlacesListData : state.BestRecommentList,
     )[route.params.index];
 
     const [totalPrice, setTotalPrice] = useState(0);
@@ -19,7 +19,6 @@ const BookScreen = ({ navigation, route }: any) => {
     let tempPrice = 0;
 
     const handleTotalPriceChange = (newTotalPrice: number) => {
-        console.log("New Total Price:", newTotalPrice);
         tempPrice = tempPrice + newTotalPrice;
         setTotalPrice(tempPrice);
     };
@@ -32,6 +31,65 @@ const BookScreen = ({ navigation, route }: any) => {
         navigation.push("Payment", { amount: totalPrice })
     }
 
+    const [initializing, setInitializing] = useState<boolean>(true);
+    const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
+
+    useEffect(() => {
+        auth().onAuthStateChanged(activeUser => {
+            setUser(activeUser);
+            if (initializing) {
+                setInitializing(false);
+            }
+        })
+    }, [initializing]);
+
+    if (initializing) {
+        return null;
+    }
+
+    if (!user) {
+        return (
+            <View style={styles.ScreenContainer}>
+                <StatusBar backgroundColor={COLORS.primaryBlackHex} />
+                <View style={styles.ImageHeaderBarContainer}>
+                    <TouchableOpacity onPress={() => {
+                        BackHandler();
+                    }}>
+                        <GradientBGIcon
+                            name='left'
+                            color={COLORS.primaryLightGreyHex}
+                            size={FONTSIZE.size_16} />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.ImageContainer}>
+                    <ImageBackground
+                        source={require('../assets/extra/login.png')}
+                        style={styles.ItemBackGroundImage}
+                    />
+                </View>
+                <View style={styles.FormContainer}>
+                    <Text style={styles.AccountTellText}>Need to have account to Pay</Text>
+                    <View style={styles.InputContainer}>
+                        <TouchableOpacity
+                            style={styles.MainButton}
+                            onPress={() => {
+                                navigation.navigate('User');
+                            }}>
+                            <Text style={styles.ButtonText}>Create Account</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.MainButton}
+                            onPress={() => {
+                                navigation.navigate('User');
+                            }}>
+                            <Text style={styles.ButtonText}>Login</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+        );
+    }
+
     return (
         <View style={styles.ScreenContainer}>
             <StatusBar backgroundColor={COLORS.primaryBlackHex} />
@@ -39,27 +97,23 @@ const BookScreen = ({ navigation, route }: any) => {
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.ScrollViewFlex}>
-
                 <View style={styles.ScrollViewInnerView}>
                     <View style={styles.ItemContainer}>
-                        
                         <View style={styles.ListItemContainer}>
                             <Text>{ItemofIndex.name}</Text>
                             {
                                 ItemofIndex.accommodations.map((accommodation: any) => (
-                                    <TouchableOpacity onPress={() => { }} key={accommodation.id}>
+                                    <TouchableOpacity key={accommodation.id}  onPress={() => { }} >
                                         <HotelItem
                                             name={accommodation.name}
                                             room={accommodation.room}
                                             imagelink_square={accommodation.imagelink_square}
                                             onTotalPriceChange={handleTotalPriceChange}
-                                        />
+                                            />
                                     </TouchableOpacity>
                                 ))}
                         </View>
                     </View>
-
-                    
                 </View>
             </ScrollView>
             {ItemofIndex && ItemofIndex.accommodations.length !== 0 ? (
@@ -110,6 +164,52 @@ const styles = StyleSheet.create({
     ListItemContainer: {
         gap: SPACING.space_16,
         paddingHorizontal: SPACING.space_30 * 0.72,
+    },
+    FormContainer: {
+        flex: 1,
+        alignItems: 'center',
+        marginVertical: SPACING.space_30 * 2
+    },
+    InputContainer: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    ButtonText: {
+        fontFamily: FONTFAMILY.poppins_semibold,
+        fontSize: FONTSIZE.size_18,
+        color: COLORS.primaryWhiteHex,
+    },
+    AccountTellText: {
+        fontFamily: FONTFAMILY.poppins_semibold,
+        fontSize: FONTSIZE.size_14,
+        color: COLORS.primaryWhiteHex,
+    },
+    MainButton: {
+        backgroundColor: COLORS.primaryOrangeHex,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: BORDERRADIUS.radius_15,
+        padding: SPACING.space_15 * 0.6,
+        marginVertical: SPACING.space_10,
+        width: 350,
+    },
+    ImageHeaderBarContainer: {
+        padding: SPACING.space_20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    ItemBackGroundImage: {
+        width: '80%',
+        aspectRatio: 30 / 24,
+    },
+    ImageContainer: {
+        alignItems: 'center',
+        marginTop: SPACING.space_30 * 2,
+        justifyContent: 'center',
+        marginHorizontal: SPACING.space_12 * 5,
+        paddingLeft: SPACING.space_10 * 4.2,
     }
 });
 

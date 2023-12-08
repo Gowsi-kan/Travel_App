@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
 import CustomIcon from './CustomIcon';
 import { useNavigation } from '@react-navigation/native';
+import { useStore } from '../store/store';
 
 interface HotelItemProps {
     name: string;
@@ -46,6 +47,17 @@ const HotelItem: React.FC<HotelItemProps> = ({
         return quantity * price;
     };
 
+    const addQuantity = useStore((state: any) => state.addQuantity);
+    const BookedList = useStore((state: any) => state.checkList);
+
+    if (BookedList.length > 0) {
+        for (let i = 0; i < BookedList.length; i++) {
+            console.log(`Booked ${i}: ${BookedList[i].name}`);
+        }
+    } else {
+        console.log("FavoriteList is empty.");
+    }
+
     const calculateOverallTotalPrice = () => {
         let totalPrice = 0;
 
@@ -61,6 +73,7 @@ const HotelItem: React.FC<HotelItemProps> = ({
                 totalPrice += calculateTotalPrice(data);
             });
         }
+       
 
         onTotalPriceChange(totalPrice);
         return totalPrice;
@@ -97,7 +110,7 @@ const HotelItem: React.FC<HotelItemProps> = ({
                             <View style={styles.BookItemQuantityContainer} >
                                 <Text style={styles.BookItemQuantityText}>{quantities[data.size] || 0}</Text>
                             </View>
-                            <TouchableOpacity style={styles.HotelItemIcon} onPress={() => handleAddQuantity(data)}>
+                            <TouchableOpacity style={styles.HotelItemIcon} onPress={() => (handleAddQuantity(data), addQuantity(name, data.size))}>
                                 <CustomIcon name="add" color={COLORS.primaryWhiteHex} size={FONTSIZE.size_10} />
                             </TouchableOpacity>
                         </View>
@@ -106,7 +119,8 @@ const HotelItem: React.FC<HotelItemProps> = ({
 
                 <View style={styles.TotalContainer}>
                     <View style={styles.TotalPriceContainer} >
-                        <Text style={styles.TotalPriceText}>Total : ${calculateOverallTotalPrice()}</Text>
+                        <Text style={styles.TotalPriceText}>Total : $</Text>
+                        <Text style={styles.TotalPriceTextPrice}>{calculateOverallTotalPrice()}</Text>
                     </View>
                 </View>
             </LinearGradient>
@@ -202,6 +216,8 @@ const styles = StyleSheet.create({
         borderColor: COLORS.primaryGreyHex,
         alignItems: 'center',
         paddingVertical: SPACING.space_4,
+        flexDirection: 'row',
+        justifyContent: 'center'
     },
     TotalPriceText: {
         fontFamily: FONTFAMILY.poppins_semibold,
@@ -210,6 +226,11 @@ const styles = StyleSheet.create({
     },
     TotalContainer: {
         alignItems: 'center'
+    },
+    TotalPriceTextPrice: {
+        fontFamily: FONTFAMILY.poppins_semibold,
+        fontSize: FONTSIZE.size_16,
+        color: COLORS.primaryOrangeHex
     }
 });
 

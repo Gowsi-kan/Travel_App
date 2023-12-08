@@ -6,14 +6,10 @@ import AuthFirebase from '../config/AuthFirebase'
 
 const UserScreen = () => {
 
-    const [userToken, setUserToken] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
-
     return (
         <View style={styles.ScreenContainer}>
             <StatusBar backgroundColor={COLORS.primaryBlackHex} />
             <HeaderBar title="Profile" isProfile={false} />
-            {/* <ActivityIndicator size="large" /> */}
             <AuthFirebase/>
         </View>
     )

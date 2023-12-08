@@ -11,16 +11,16 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A1', name: 'Luxury Hotel', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A2', name: 'Boutique Inn', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -43,17 +43,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A3', name: 'Beach Resort', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A4', name: 'Cozy Bungalow', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -76,17 +76,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A5', name: 'Mountain Lodge', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A6', name: 'Cabin Getaway', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -109,17 +109,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A7', name: 'Heritage Hotel', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80' },
-                    { size: 'L', price: '$100' },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A8', name: 'Charming Guesthouse', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -142,17 +142,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A9', name: 'Cottage by the Lake', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A10', name: 'Wilderness Cabin', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -175,17 +175,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A11', name: 'Beachfront Resort', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A12', name: 'Seaside Villa', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -208,17 +208,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A13', name: 'Woodland Cabin', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A14', name: 'Treehouse Retreat', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -241,17 +241,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A15', name: 'Mountain Chalet', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A16', name: 'Snowy Lodge', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -274,17 +274,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A17', name: 'Safari Lodge', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A18', name: 'Tented Camp', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -307,17 +307,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A19', name: 'Luxury Beach Resort', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A20', name: 'Private Beach Villa', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -340,17 +340,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A21', name: 'Cultural District Hotel', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A22', name: 'Artisan Guesthouse', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -373,17 +373,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A23', name: 'Riverside Cabin', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A24', name: 'Nature Lodge', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
@@ -406,17 +406,17 @@ const PlacesData = [
         accommodations: [
             {
                 id: 'A25', name: 'Alpine Chalet', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },
             {
                 id: 'A26', name: 'Mountain View Cabin', room: [
-                    { size: 'S', price: '$60', quantity: 1 },
-                    { size: 'M', price: '$80', quantity: 1 },
-                    { size: 'L', price: '$100', quantity: 1 },
+                    { size: 'S', price: '$60', quantity: 0 },
+                    { size: 'M', price: '$80', quantity: 0 },
+                    { size: 'L', price: '$100', quantity: 0 },
                 ],
                 imagelink_square: require('../assets/places_assets/hotels/p2/hotels.png'),
             },

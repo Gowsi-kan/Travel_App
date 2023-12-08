@@ -41,8 +41,8 @@ const getPlaceList = (category: string, data: any) => {
 }
 
 const HomeScreen = ({ navigation }: any) => {
-  const DestList = useStore((state: any) => state.PlacesDataList);
-  const RecommenddList = useStore((state: any) => state.BestRecList);
+  const DestList = useStore((state: any) => state.PlacesListData);
+  const RecommenddList = useStore((state: any) => state.BestRecommentList);
   const [categories, setCategories] = useState(getCategoriesFromData(DestList));
   const [type, setType] = useState(getTypeFromData(DestList));
   const [searchText, setSearchText] = useState('');
@@ -54,9 +54,6 @@ const HomeScreen = ({ navigation }: any) => {
 
   const ListRef: any = useRef<FlatList>();
   const tabBarHeight = useBottomTabBarHeight();
-
-  console.log("Categories = ", categories);
-  console.log("Sorted Place = ", sortedPlace.length);
 
   const searchPlace = (search: string) => {
     if (search != '') {

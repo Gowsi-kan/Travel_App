@@ -4,14 +4,15 @@ import { COLORS, SPACING } from '../theme/theme';
 
 interface ProfilePicProps {
     isProfile?: boolean;
+    imageSource: any;
 }
 
-const ProfilePic: React.FC<ProfilePicProps> = ({ isProfile }) => {
+const ProfilePic: React.FC<ProfilePicProps> = ({ isProfile,imageSource }) => {
     return (
         <View style={styles.ImageContainer}>
             {isProfile ?
                 (<Image
-                    source={require('../assets/app_images/avatar.png')}
+                    source={{uri: imageSource}}
                     style={styles.Image}
                 />) : <></>}
         </View>

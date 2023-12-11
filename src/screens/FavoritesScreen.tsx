@@ -32,7 +32,7 @@ const FavouriteScreen = ({ navigation,route }: any) => {
     return (
         <View style={styles.ScreenContainer}>
             <StatusBar backgroundColor={COLORS.primaryBlackHex} />
-            <HeaderBar title="Favorites" />
+            <HeaderBar title="Favorites" isProfile={true} navigation={navigation}/>
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.ScrollViewFlex}>

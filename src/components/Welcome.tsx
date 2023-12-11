@@ -7,7 +7,7 @@ type propsType = {
     email: string|null;
 }
 
-const Welcome = (props: propsType) => {
+const Welcome = (props: propsType,{navigation}:any) => {
 
     const LogOutUser = () => {
         auth()

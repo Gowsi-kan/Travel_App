@@ -88,7 +88,7 @@ const HomeScreen = ({ navigation }: any) => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.ScrollViewFlex}>
         {/* App Header */}
-        <HeaderBar isProfile={true} />
+        <HeaderBar isProfile={true} navigation={navigation}/>
 
         <Text style={styles.ScreenTitle}>Find the best{'\n'}places for you</Text>
 

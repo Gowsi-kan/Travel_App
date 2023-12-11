@@ -7,9 +7,10 @@ import ProfilePic from './ProfilePic';
 interface HeaderBarProps {
     title?: string;
     isProfile?: boolean;
+    navigation?: any;
 }
 
-const HeaderBar: React.FC<HeaderBarProps> = ({ title, isProfile }) => {
+const HeaderBar: React.FC<HeaderBarProps> = ({ title, isProfile,navigation }) => {
     return (
         <View style={styles.HeaderContainer}>
             <GradientBGIcon name='menu' color={COLORS.primaryLightGreyHex} size={FONTSIZE.size_16} />
@@ -17,6 +18,7 @@ const HeaderBar: React.FC<HeaderBarProps> = ({ title, isProfile }) => {
             <ProfilePic
                 isProfile={isProfile}
                 imageSource={'https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg'}
+                navigation={navigation}
             />
         </View>
     )

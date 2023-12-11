@@ -6,6 +6,7 @@ import Login from '../components/Login';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImagePicker from 'react-native-image-crop-picker';
+import storage from '@react-native-firebase/storage';
 
 const CARD_WIDTH = Dimensions.get('window').width * 0.85;
 
@@ -17,6 +18,9 @@ const AuthFirebase = () => {
   const [photoURL, setPhotoURL] = useState("https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg");
 
   const LogOutUser = () => {
+
+    setPhotoURL("https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg");
+
     auth()
       .signOut()
       .then(() => console.log('User signed out!'));
@@ -30,8 +34,38 @@ const AuthFirebase = () => {
       cropping: true
     }).then(image => {
       setImage(image.path);
-      ToastAndroid.show("Photo Uploaded Successfully", ToastAndroid.LONG);
+      ToastAndroid.show("Photo Selected Successfully", ToastAndroid.LONG);
+
+      // Call photoUpload function here
+      photoUpload(image.path);
     });
+  }
+
+  const photoUpload = async (pathToFile: string) => {
+    // Assuming you are using Firebase Authentication
+    const user = auth().currentUser;
+
+    if (user) {
+      const uid = user.uid;
+      const newFilename = `${uid}`;
+
+      try {
+        const reference = storage().ref(newFilename);
+
+        // Upload the file to Firebase Storage
+        await reference.putFile(pathToFile);
+        const url = await storage().ref(newFilename).getDownloadURL();
+        console.log(url);
+
+        ToastAndroid.show("Photo Uploaded Successfully", ToastAndroid.LONG);
+      } catch (e) {
+        console.log(e);
+        // Handle error as needed
+      }
+    } else {
+      // Handle the case where the user is not authenticated
+      console.log("User not authenticated");
+    }
   }
 
   useEffect(() => {
@@ -40,11 +74,25 @@ const AuthFirebase = () => {
       if (initializing) {
         setInitializing(false);
       }
-    })
 
-    if (user?.photoURL) {
-      setPhotoURL(user.photoURL);
-    }
+      const fetchImage = async () => {
+        if (activeUser) {
+          const uid = activeUser.uid;
+
+          try {
+            const url = storage().ref(uid).getDownloadURL();
+
+            setPhotoURL(await url);
+          } catch (e) {
+            
+          }
+        }
+      }
+
+      fetchImage()
+        .catch(console.error);
+    })
+    
 
   }, [initializing]);
 
@@ -64,7 +112,7 @@ const AuthFirebase = () => {
       <View style={styles.ImageContainer}>
         <View style={styles.ImageContainer2}>
           <Image
-            source={{ uri: image }}
+            source={{ uri: photoURL }}
             style={styles.Image2}
             alt='Loading'
           />
@@ -94,7 +142,7 @@ const AuthFirebase = () => {
           </View>
         </LinearGradient>
       </View>
-      <View style={styles.SpaceBetween}>
+      {/* <View style={styles.SpaceBetween}>
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
@@ -107,7 +155,7 @@ const AuthFirebase = () => {
             </View>
           </View>
         </LinearGradient>
-      </View>
+      </View> */}
       <View style={styles.ButtonContainer}>
         <TouchableOpacity
           style={styles.LogOutButton}
